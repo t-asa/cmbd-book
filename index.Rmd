@@ -11,5 +11,3 @@ R, Stan等のソースコード等のファイルは以下のGitHubリポジト�
 [https://github.com/kkatahira/cmbd-book](https://github.com/kkatahira/cmbd-book)
 
 ソースコードをまとめたzipファイルは[こちら](./codes/qlearning_simulation.zip)からもダウンロードできます (作成中)。
-
-## 正誤表
