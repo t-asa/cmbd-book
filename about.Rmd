@@ -2,6 +2,8 @@
 title: "about"
 ---
 
+作成中
+
 <!--
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
