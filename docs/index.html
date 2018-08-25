@@ -220,9 +220,7 @@ $(document).ready(function () {
 <h2>ソースコードについて</h2>
 <p>RコードはRStudio上で動かすことを想定しています。</p>
 <p>必要なパッケージは章ごとに記します。 インストールして使用してください。 例えば’tidyverse’を使用する必要があるときは，</p>
-<blockquote>
-<p>install.packages(‘tidyverse’)</p>
-</blockquote>
+<p><code>&gt; install.packages('tidyverse')</code></p>
 <p>とコマンドライン上で打てばインストールすることができます。</p>
 <p>ソースコードは章ごとにフォルダが分けられています。</p>
 <div id="2" class="section level3">
@@ -239,99 +237,13 @@ $(document).ready(function () {
 <li><p>qlearning_model_comparison.R<br />
 – 図2.5と同じデータを生成し，それに対するQ学習モデル，WSLSモデル，ランダムモデルの最尤推定を行い，モデル間を比較します。図2.7を作成します。</p></li>
 </ul>
-<!--
-
-```r
-# メモリとグラフのクリア
-rm(list=ls())
-graphics.off()
-
-# 描画用ライブラリの読み込み
-library(tidyverse)
-```
-
-```
-## -- Attaching packages -------------------- tidyverse 1.2.1 --
-```
-
-```
-## √ ggplot2 3.0.0     √ purrr   0.2.4
-## √ tibble  1.4.2     √ dplyr   0.7.4
-## √ tidyr   0.8.0     √ stringr 1.3.1
-## √ readr   1.1.1     √ forcats 0.3.0
-```
-
-```
-## Warning: package 'ggplot2' was built under R version 3.5.1
-```
-
-```
-## -- Conflicts ----------------------- tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-```
-
-```r
-#----------------------------------------------------------#
-# RW modelのシミュレーションの実行
-#----------------------------------------------------------#
-
-# 乱数のシードの設定 
-set.seed(928)
-
-# 試行数
-T <- 50
-
-# 学習率
-alpha <- 0.2
-
-# 報酬確率
-pr <- 0.8
-
-# 連合強度( 価値) V と報酬r の配列を作成
-V <- numeric(T)
-r <- numeric(T)
-
-for (t in 1:T) {
-  
-  # 報酬の有無の決定
-  r[t] <- as.numeric( runif(1 ,0 ,1) < pr)
-  
-  # 連合強度の更新
-  if (t < T) {
-    V[t +1] <- V[t] + alpha * (r[t] - V[t])
-  }
-}
-
-#----------------------------------------------------------#
-# グラフの描画
-#----------------------------------------------------------#
-
-# ggplotのテーマ設定
-ggplot() + theme_set(theme_bw(base_size = 18)) 
-
-# ウィンドウの生成
-x11()
-
-# 描画するデータをデータフレームにまとめる
-dfplot <- data.frame(trials = 1:T, 
-                 V = V,
-                 r = as.factor(r))
-
-# 描画
-g <- ggplot(dfplot, aes(x = trials, y = V)) +
-  geom_line(aes(y = V), linetype = 1, size=1.2) +
-  geom_point(data = dfplot %>% filter(r == 1), 
-             aes(x = trials, y = 1.12), shape = 25, size = 1.5) + 
-  scale_y_continuous(breaks=c(0, 0.5, 1.0), labels = c(0,0.5,1)) +
-  xlab("試行") +
-  ylab("連合強度 V") 
-
-print(g)
-```
-
-<img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" />
--->
+</div>
+<div id="4" class="section level3">
+<h3>第4章</h3>
+<p>4章で登場するMCMC法を用いるいは，RStanのインストールが必要になります。 RStanのインストール方法は例えば<a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started-(Japanese)">こちら</a>を参考にしてください。</p>
+<ul>
+<li>Bernoulli_bayes.R – コイントスにおけるベイズ推定。図4.1を作成します。</li>
+</ul>
 </div>
 </div>
 
